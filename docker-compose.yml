@@ -1,0 +1,14 @@
+version: "3"
+services:
+  rust:
+    image: rust:latest
+    container_name: rust-example
+    hostname: rust-example
+    user: "${UID}:${GID}"
+    volumes:
+      - ./:/usr/src/rust-example
+    working_dir: /usr/src/rust-example
+    environment:
+      TZ: Asia/Tokyo
+    tty: true
+
