@@ -1,16 +1,23 @@
+struct Ipv4Addr {
+    value: [u8; 4],
+}
+
+struct Ipv6Addr {
+    value: String,
+}
+
 enum IpAddrKind {
-    V4(u8, u8, u8, u8),
-    V6(String),
+    V4(Ipv4Addr),
+    V6(Ipv6Addr),
 }
 
 fn main() {
-    let home = IpAddrKind::V4(127, 0, 0, 1);
-    let loopback  = IpAddrKind::V6(String::from("::1"));
+    let home = IpAddrKind::V4(Ipv4Addr { value: [127, 0, 0, 1] });
+    let loopback  = IpAddrKind::V6(Ipv6Addr { value: String::from("::1") });
 
     route(home);
     route(loopback);
 }
 
 fn route(_ip_type: IpAddrKind) {
-    //println!("ip type {:?}", ip_type);
 }
