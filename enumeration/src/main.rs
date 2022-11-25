@@ -11,6 +11,19 @@ enum IpAddrKind {
     V6(Ipv6Addr),
 }
 
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self) {
+        println!("Message::call");
+    }
+}
+
 fn main() {
     let home = IpAddrKind::V4(Ipv4Addr { value: [127, 0, 0, 1] });
     let loopback  = IpAddrKind::V6(Ipv6Addr { value: String::from("::1") });
